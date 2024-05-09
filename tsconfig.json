@@ -4,7 +4,9 @@
         "module": "CommonJS", /* Specify what module code is generated. */
         "outDir": "./dist", /* Directory where compiled javascript files will be generated */
         "strict": true, /* Enable all strict type-checking options. */
-        "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+        "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false
     },
     "include": ["src/**/*"]
 }
