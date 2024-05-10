@@ -7,7 +7,9 @@ export class Projet {
     @PrimaryGeneratedColumn()
     _idProjet: number;
 
-    @Column()
+    @Column({
+        unique: true
+    })
     nomProjet: string;
 
     @OneToMany(() => Tache, (tache) => tache.projet)
