@@ -3,38 +3,40 @@ import { Tache } from "../entities/Tache";
 import { AppDataSource } from "../config/datasource";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
-export class TacheRepository extends Repository<Tache> {
+export class TacheRepository {
+
+    private repo: Repository<Tache>;
 
     constructor() {
-        super(Tache, AppDataSource.manager);
+        this.repo = AppDataSource.getRepository(Tache);
     }
 
     async getAllTaches(filter: FindOptionsWhere<Tache>): Promise<Tache[]> {
-        const listeTaches: Tache[] = await this.find({where: filter});
+        const listeTaches: Tache[] = await this.repo.find({where: filter});
 
         return listeTaches;
     }
 
     async getById(filter: FindOptionsWhere<Tache>): Promise<Tache | null> {
-        const tache = await this.findOneBy(filter);
+        const tache = await this.repo.findOneBy(filter);
 
         return tache;
     }
 
     async createTache(tache: DeepPartial<Tache>): Promise<Tache> {
-        const resultat = await this.save(tache);
+        const resultat = await this.repo.save(tache);
 
         return resultat;
     }
 
     async updateTache(filter: FindOptionsWhere<Tache>, tache:  QueryDeepPartialEntity<Tache>): Promise<Tache | null> {
-        await this.update(filter, tache);
+        await this.repo.update(filter, tache);
 
-        return this.findOneBy(filter);
+        return this.repo.findOneBy(filter);
     }
 
     async deleteTache(id: number): Promise<DeleteResult> {
-        const resultat = await this.delete(id);
+        const resultat = await this.repo.delete(id);
 
         return resultat;
     }

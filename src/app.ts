@@ -1,4 +1,5 @@
 /** Todo-list App */
+import "reflect-metadata";
 import * as dotenv from 'dotenv';
 import projetRoutes from './routes/projet.routes';
 import tacheRoutes from './routes/tache.routes';
