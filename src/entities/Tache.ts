@@ -19,6 +19,11 @@ export class Tache {
     @Column()
     priorite: number;
 
+    @Column({
+        default: false
+    })
+    isDone: boolean;
+
     @ManyToOne(() => Projet, (projet) => projet.listeTaches)
     projet: Projet;
 }

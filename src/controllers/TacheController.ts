@@ -62,6 +62,7 @@ export class TacheController {
                 tache.dateEcheance = new Date(dateEcheance);
                 tache.priorite = priorite;
                 tache.projet = projet;
+                tache.isDone = false;
 
 
                 const resultat = await this.tacheService.createTache(tache);
